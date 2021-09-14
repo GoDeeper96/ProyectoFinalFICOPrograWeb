@@ -1,4 +1,4 @@
-package grupo3.serviceimpl;
+package pe.com.fico.serviceimpl;
 
 import java.util.List;
 
@@ -6,9 +6,9 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import grupo3.dao.IInstitutionDao;
-import grupo3.entities.Institution;
-import grupo3.service.IInstitutionService;
+import pe.com.fico.dao.IInstitutionDao;
+import pe.com.fico.entities.Institution;
+import pe.com.fico.service.IInstitutionService;
 
 @Named
 @RequestScoped

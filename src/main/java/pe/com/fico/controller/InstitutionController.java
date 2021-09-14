@@ -1,4 +1,4 @@
-package grupo3.controller;
+package pe.com.fico.controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,8 +8,8 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import grupo3.entities.Institution;
-import grupo3.service.IInstitutionService;
+import pe.com.fico.entities.Institution;
+import pe.com.fico.service.IInstitutionService;
 
 @Named
 @RequestScoped

@@ -1,8 +1,8 @@
-package grupo3.dao;
+package pe.com.fico.dao;
 
 import java.util.List;
 
-import grupo3.entities.Institution;
+import pe.com.fico.entities.Institution;
 
 public interface IInstitutionDao {
 

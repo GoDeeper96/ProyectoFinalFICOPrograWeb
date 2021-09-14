@@ -1,4 +1,4 @@
-package grupo3.daoimpl;
+package pe.com.fico.daoimpl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,8 +8,8 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 
-import grupo3.dao.IInstitutionDao;
-import grupo3.entities.Institution;
+import pe.com.fico.dao.IInstitutionDao;
+import pe.com.fico.entities.Institution;
 
 public class InstitutionImpl implements IInstitutionDao {
 	@PersistenceContext(unitName = "Fico")

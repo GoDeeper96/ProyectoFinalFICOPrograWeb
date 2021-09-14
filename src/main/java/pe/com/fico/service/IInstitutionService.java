@@ -1,8 +1,8 @@
-package grupo3.service;
+package pe.com.fico.service;
 
 import java.util.List;
 
-import grupo3.entities.Institution;
+import pe.com.fico.entities.Institution;
 
 public interface IInstitutionService {
 
