@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="master.xhtml">
+
+	<ui:define name="title">
+        .:Registro de Cuentas de Ahorro:.
+    </ui:define>
+
+	<ui:define name="titleCont">
+		<span>Cuentas de Ahorro</span>
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form>
+			<h:outputLabel for="idSavingAccountProduct" value="Id " styleClass="control-label" />
+
+			<p:inputText autocomplete="off" id="idSavingAccountProduct"
+				styleClass="form-control"
+				value="#{savingAccountProductController.savingaccount.idSavingAccount}" required="true" />
+
+			<br />
+			<h:outputLabel for="cboProduct" value="Nombre producto" />
+			<p:selectOneMenu id="cboProduct"
+				value="#{savingAccountProductController.savingaccount.product}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{savingAccountProductController.listProduct}" var="m"
+					itemLabel="#{m.nameProduct}" itemValue="#{m}" />
+			</p:selectOneMenu>
+			<hr></hr>
+			<br />
+
+			<h:outputLabel for="typeSavingAccount" value="Tipo de Cuenta de Ahorro"
+				styleClass="control-label" />
+
+			<p:inputText autocomplete="off" id="typeSavingAccount"
+				styleClass="form-control"
+				value="#{savingAccountProductController.savingaccount.typeSavingAccount}" maxlength="30"
+				required="true" />
+				
+			<h:outputLabel for="secureFoundSA" value="Fondo de seguro"
+				styleClass="control-label" />
+
+			<p:inputText autocomplete="off" id="secureFoundSA"
+				styleClass="form-control"
+				value="#{savingAccountProductController.savingaccount.secureFounSA}" maxlength="30"
+				required="true" />
+				
+			<h:outputLabel for="minOpeningSA" value="Monto mínimo"
+				styleClass="control-label" />
+
+			<p:inputText autocomplete="off" id="minOpeningSA"
+				styleClass="form-control"
+				value="#{savingAccountProductController.savingaccount.minOpeningSaving}" maxlength="30"
+				required="true" />
+
+
+			<h:outputLabel for="mantCostSA" value="Mantenimiento"
+				styleClass="control-label" />
+
+			<p:inputText autocomplete="off" id="mantCostSA"
+				styleClass="form-control"
+				value="#{savingAccountProductController.savingaccount.mantCostSA}" maxlength="30"
+				required="true" />
+				
+			<h:outputLabel for="freeOperationSA" value="Operaciones Libres"
+				styleClass="control-label" />
+
+			<p:inputText autocomplete="off" id="freeOperationSA"
+				styleClass="form-control"
+				value="#{savingAccountProductController.savingaccount.freeOperationSA}" maxlength="30"
+				required="true" />
+
+
+			<p:commandButton value="Grabar"
+				actionListener="#{savingAccountProductController.insertSavingAccountProduct()}"
+				styleClass="btn btn-primary " update="@form"
+				action="listSavingAccountProduct?faces-redirect=true" />
+			<p:commandButton value="Cancelar"
+				action="listSavingAccountProduct?faces-redirect=true" immediate="true"
+				styleClass="btn btn-default" ajax="false" />
+
+
+
+		</h:form>
+	</ui:define>
+
+	<ui:define name="footerCont">
+
+	</ui:define>
+</ui:composition>
+</html>
