@@ -1,4 +1,4 @@
-package pe.com.fico.serviceimpl;
+package pe.edu.upc.serviceimpl;
 
 import java.util.List;
 
@@ -6,16 +6,16 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import pe.com.fico.dao.IUserCenterDao;
-import pe.com.fico.entities.UserCenter;
-import pe.com.fico.service.IUserCenterService;
+import pe.edu.upc.dao.UserCenterDao;
+import pe.edu.upc.entities.UserCenter;
+import pe.edu.upc.service.UserCenterService;
 
 @Named
 @RequestScoped
-public class UserCenterServiceImpl implements IUserCenterService {
+public class UserCenterServiceImpl implements UserCenterService {
 
 	@Inject
-	private IUserCenterDao vDao;
+	private UserCenterDao vDao;
 
 	@Override
 	public void insert(UserCenter vc) {

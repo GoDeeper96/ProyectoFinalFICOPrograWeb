@@ -1,4 +1,4 @@
-package pe.com.fico.controller;
+package pe.edu.upc.controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,20 +8,20 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import pe.com.fico.entities.RolUser;
-import pe.com.fico.entities.UserCenter;
-import pe.com.fico.service.IRolUserService;
-import pe.com.fico.service.IUserCenterService;
+import pe.edu.upc.entities.RolUser;
+import pe.edu.upc.entities.UserCenter;
+import pe.edu.upc.service.RolUserService;
+import pe.edu.upc.service.UserCenterService;
 
 @Named
 @RequestScoped
 public class UserCenterController {
 	// CDI
 	@Inject
-	private IUserCenterService vService;
+	private UserCenterService vService;
 
 	@Inject
-	private IRolUserService ruService;
+	private RolUserService ruService;
 
 	// Atributos
 	private UserCenter userCenter;
@@ -44,9 +44,9 @@ public class UserCenterController {
 
 	public String newUser() {
 		this.setUserCenter(new UserCenter());
-		return "user.xhtml";
+		return "asesor.xhtml";
 	}
-
+	
 	public void listRolUser() {
 		listaRolUser = ruService.list();
 	}

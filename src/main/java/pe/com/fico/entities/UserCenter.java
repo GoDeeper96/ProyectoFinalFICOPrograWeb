@@ -1,4 +1,4 @@
-package pe.com.fico.entities;
+package pe.edu.upc.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -28,7 +28,22 @@ public class UserCenter {
 	
 	@Column(name = "dniUserCenter", length =8, nullable=false )
 	private int dniUserCenter;
-
+	
+	@Column(name = "edadUserCenter", length =2, nullable=false )
+	private int edadUserCenter;
+	
+	@Column(name = "ciudadUserCenter", length =45, nullable=true )
+	private String ciudadUserCenter;
+	
+	@Column(name = "espUserCenter", length =8, nullable=true )
+	private String espUserCenter;
+	
+	@Column(name = "salarioUserCenter", length =5, nullable=true )
+	private int salarioUserCenter;
+	
+	@Column(name = "ptsUserCenter", length =1 , nullable=true )
+	private int ptsUserCenter;
+	
 	@ManyToOne
 	@JoinColumn(name = "idRolUser", nullable= false)
 	private RolUser rolUser;
@@ -43,13 +58,19 @@ public class UserCenter {
 	}
 
 	// Constructor con parámetros
-	public UserCenter(int idUserCenter, String nameUserCenter, String adressUserCenter, String emailUserCenter, int dniUserCenter, RolUser rolUser) {
+	public UserCenter(int idUserCenter, String nameUserCenter, String adressUserCenter, String emailUserCenter, int dniUserCenter, int edadUserCenter,
+			String ciudadUserCenter, String espUserCenter, int salarioUserCenter,   RolUser rolUser) {
 		super();
 		this.idUserCenter = idUserCenter;
 		this.nameUserCenter = nameUserCenter;
 		this.adressUserCenter = adressUserCenter;
 		this.emailUserCenter = emailUserCenter;
 		this.dniUserCenter = dniUserCenter;
+		this.edadUserCenter = edadUserCenter;
+		this.ciudadUserCenter = ciudadUserCenter;
+		this.espUserCenter = espUserCenter;
+		this.salarioUserCenter = salarioUserCenter;
+		this.ptsUserCenter = 5;
 		this.rolUser = rolUser;
 		
 	}
@@ -94,6 +115,46 @@ public class UserCenter {
 
 	public void setDniUserCenter(int dniUserCenter) {
 		this.dniUserCenter = dniUserCenter;
+	}
+
+	public int getEdadUserCenter() {
+		return edadUserCenter;
+	}
+
+	public void setEdadUserCenter(int edadUserCenter) {
+		this.edadUserCenter = edadUserCenter;
+	}
+
+	public String getCiudadUserCenter() {
+		return ciudadUserCenter;
+	}
+
+	public void setCiudadUserCenter(String ciudadUserCenter) {
+		this.ciudadUserCenter = ciudadUserCenter;
+	}
+
+	public String getEspUserCenter() {
+		return espUserCenter;
+	}
+
+	public void setEspUserCenter(String espUserCenter) {
+		this.espUserCenter = espUserCenter;
+	}
+
+	public int getSalarioUserCenter() {
+		return salarioUserCenter;
+	}
+
+	public void setSalarioUserCenter(int salarioUserCenter) {
+		this.salarioUserCenter = salarioUserCenter;
+	}
+
+	public int getPtsUserCenter() {
+		return ptsUserCenter;
+	}
+
+	public void setPtsUserCenter(int ptsUserCenter) {
+		this.ptsUserCenter = ptsUserCenter;
 	}
 
 	public RolUser getRolUser() {

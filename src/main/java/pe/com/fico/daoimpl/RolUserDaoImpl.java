@@ -1,4 +1,4 @@
-package pe.com.fico.daoimpl;
+package pe.edu.upc.daoimpl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,12 +8,12 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 
-import pe.com.fico.dao.IRolUserDao;
-import pe.com.fico.entities.RolUser;
+import pe.edu.upc.dao.RolUserDao;
+import pe.edu.upc.entities.RolUser;
 
-public class RolUserDaoImpl implements IRolUserDao {
+public class RolUserDaoImpl implements RolUserDao {
 
-	@PersistenceContext(unitName = "Fico")
+	@PersistenceContext(unitName = "demoPrueba")
 	private EntityManager em;
 
 	@Transactional
