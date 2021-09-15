@@ -1,5 +1,4 @@
-package pe.edu.upc.daoimpl;
-
+package pe.com.fico.daoimpl;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,12 +7,12 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 
-import pe.edu.upc.dao.UserCenterDao;
-import pe.edu.upc.entities.UserCenter;
+import pe.com.fico.dao.IUserCenterDao;
+import pe.com.fico.entities.UserCenter;
 
-public class UserCenterDaoImpl implements UserCenterDao {
+public class UserCenterDaoImpl implements IUserCenterDao {
 
-	@PersistenceContext(unitName = "demoPrueba")
+	@PersistenceContext(unitName = "Fico")
 	private EntityManager em;
 	
 	@Transactional

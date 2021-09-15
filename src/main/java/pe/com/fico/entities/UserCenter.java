@@ -1,4 +1,4 @@
-package pe.edu.upc.entities;
+package pe.com.fico.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

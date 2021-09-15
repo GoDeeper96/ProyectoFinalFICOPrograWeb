@@ -24,6 +24,7 @@ public class Institution {
 
 	@Column(name = "urlInstitution", length = 100, nullable = false)
 	private String urlInstitution;
+	
 
 	public Institution() {
 		super();

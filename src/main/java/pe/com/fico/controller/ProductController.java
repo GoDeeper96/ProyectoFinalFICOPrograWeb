@@ -61,13 +61,6 @@ public class ProductController {
 		listProduct = pService.list();
 	}
 
-	/*public void listaLoan() {
-		for(int i=0; i<pService.list().size();i++) {
-			if(pService.list().get(i).getTypeProduct().equals("Prestamo Personal")) {
-				listLoan.add(pService.list().get(i));
-			}
-		}
-	}*/
 	// Getters and Setter
 	public Product getProduct() {
 		return product;

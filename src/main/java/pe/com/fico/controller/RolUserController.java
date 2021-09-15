@@ -1,4 +1,4 @@
-package pe.edu.upc.controller;
+package pe.com.fico.controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,15 +8,15 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import pe.edu.upc.entities.RolUser;
-import pe.edu.upc.service.RolUserService;
+import pe.com.fico.entities.RolUser;
+import pe.com.fico.service.IRolUserService;
 
 @Named
 @RequestScoped
 public class RolUserController {
 
 	@Inject
-	private RolUserService ruService;
+	private IRolUserService ruService;
 
 	// Atributos
 	private RolUser rolUser;

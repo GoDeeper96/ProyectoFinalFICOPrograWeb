@@ -1,4 +1,5 @@
-package pe.edu.upc.serviceimpl;
+package pe.com.fico.serviceimpl;
+
 
 import java.util.List;
 
@@ -6,16 +7,16 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import pe.edu.upc.dao.RolUserDao;
-import pe.edu.upc.entities.RolUser;
-import pe.edu.upc.service.RolUserService;
+import pe.com.fico.dao.IRolUserDao;
+import pe.com.fico.entities.RolUser;
+import pe.com.fico.service.IRolUserService;
 
 @Named
 @RequestScoped
-public class RolUserServiceImpl implements RolUserService {
+public class RolUserServiceImpl implements IRolUserService {
 
 	@Inject
-	private RolUserDao ruDao;
+	private IRolUserDao ruDao;
 
 	@Override
 	public void insert(RolUser ru) {
