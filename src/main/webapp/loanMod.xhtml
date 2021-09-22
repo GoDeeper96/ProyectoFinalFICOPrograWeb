@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="submaster.xhtml">
+
+	<ui:define name="title">
+        .:Registro de prestamos:.
+    </ui:define>
+
+	<ui:define name="titleCont">
+		<span>Prestamos</span>
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form>
+			<h:outputLabel for="idLoanProduct" value="Id " styleClass="control-label" />
+
+			<p:inputText autocomplete="off" id="idLoanProduct"
+				styleClass="form-control"
+				value="#{loanProductController.loanproduct.idLoanPoduct}" required="true" />
+
+			<br />
+			<h:outputLabel for="cboProduct" value="Nombre producto" />
+			<p:selectOneMenu id="cboProduct"
+				value="#{loanProductController.loanproduct.product}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{loanProductController.listProduct}" var="m"
+					itemLabel="#{m.nameProduct}" itemValue="#{m}" />
+			</p:selectOneMenu>
+			<br />
+			
+			<br />
+			<h:outputLabel for="cboTypeLoan" value="Tipo de Prestamo" />
+			<p:selectOneMenu id="cboTypeLoan"
+				value="#{loanProductController.loanproduct.typeLoan}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{loanProductController.listTypeLoan}" var="n"
+					itemLabel="#{n.nameTypeLoan}" itemValue="#{n}" />
+			</p:selectOneMenu>
+			<br />
+				
+			<h:outputLabel for="currencyLoan" value="Moneda"
+				styleClass="control-label" />
+
+			<p:inputText autocomplete="off" id="currencyLoan"
+				styleClass="form-control"
+				value="#{loanProductController.loanproduct.currencyLoan}" maxlength="30"
+				required="true" />
+				
+			<h:outputLabel for="minAmountLoan" value="Monto mínimo"
+				styleClass="control-label" />
+
+			<p:inputText autocomplete="off" id="minAmounLoan"
+				styleClass="form-control"
+				value="#{loanProductController.loanproduct.minAmountLoan}" maxlength="30"
+				required="true" />
+
+
+			<h:outputLabel for="maxAmountLoan" value="Monto máximo"
+				styleClass="control-label" />
+
+			<p:inputText autocomplete="off" id="maxAmountLoan"
+				styleClass="form-control"
+				value="#{loanProductController.loanproduct.maxAmountLoan}" maxlength="30"
+				required="true" />
+
+
+			<p:commandButton value="Grabar"
+				actionListener="#{loanProductController.updateLoan()}"
+				styleClass="btn btn-primary " update="@form"
+				action="listLoanProduct?faces-redirect=true" />
+			<p:commandButton value="Cancelar"
+				action="listLoanProduct?faces-redirect=true" immediate="true"
+				styleClass="btn btn-default" ajax="false" />
+
+
+
+		</h:form>
+	</ui:define>
+
+	<ui:define name="footerCont">
+
+	</ui:define>
+</ui:composition>
+</html>

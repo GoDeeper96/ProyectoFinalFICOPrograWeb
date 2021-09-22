@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<ui:composition template="submaster.xhtml">
+
+	<ui:define name="title">
+        .:Registro de Afp:.
+    </ui:define>
+
+	<ui:define name="titleCont">
+		<span>AFP</span>
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form>
+			<h:outputLabel for="idAfpProduct" value="Id "
+				styleClass="control-label" />
+
+			<p:inputText autocomplete="off" id="idAfpProduct"
+				styleClass="form-control"
+				value="#{afpProductController.afpproduct.idAfpProduct}"
+				required="true" />
+
+
+			<br />
+
+
+			<p:outputLabel for="cboProduct" value="Producto" />
+			<p:selectOneMenu id="cboProduct"
+				value="#{afpProductController.afpproduct.product}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{afpProductController.listProduct}" var="m"
+					itemLabel="#{m.nameProduct}" itemValue="#{m}" />
+			</p:selectOneMenu>
+			<br />
+
+			<br />
+			<h:outputLabel for="cboMethod" value="Metodo de comisión" />
+			<p:selectOneMenu id="cboMethod"
+				value="#{afpProductController.afpproduct.methodcomition}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{afpProductController.listMethodComition}"
+					var="n" itemLabel="#{n.nameMethodAFP}" itemValue="#{n}" />
+			</p:selectOneMenu>
+			<hr></hr>
+			<br />
+
+			<h:outputLabel for="typeAfp" value="Tipo de Afp"
+				styleClass="control-label" />
+
+			<p:inputText autocomplete="off" id="typeAfp"
+				styleClass="form-control"
+				value="#{afpProductController.afpproduct.typeAfp}" maxlength="30"
+				required="true" />
+
+			<p:commandButton value="Grabar"
+				actionListener="#{afpProductController.updateAFP()}"
+				styleClass="btn btn-primary " update="@form"
+				action="listAfpProduct?faces-redirect=true" />
+			<p:commandButton value="Cancelar"
+				action="listAfpProduct?faces-redirect=true" immediate="true"
+				styleClass="btn btn-default" ajax="false" />
+		</h:form>
+	</ui:define>
+
+	<ui:define name="footerCont">
+
+	</ui:define>
+</ui:composition>
+</html>

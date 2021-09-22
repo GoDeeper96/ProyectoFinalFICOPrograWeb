@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<ui:composition template="submaster.xhtml">
+
+
+	<ui:define name="title">
+        .:Listado de AFP:.
+    </ui:define>
+
+	<ui:define name="titleCont">
+		<span>AFP </span>
+	</ui:define>
+
+	<ui:define name="content">
+
+		<h:form>
+			<div class="row">
+				<p:commandButton value="Nuevo"
+					action="#{afpProductController.newLoanProduct()}"
+					styleClass="btn btn-primary" ajax="false" />
+			</div>
+
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="form-group table-responsive box-table-class">
+
+						<p:dataTable id="lstAfpProduct" var="lp"
+							value="#{afpProductController.listAfpProduct}" paginator="true"
+							paginatorPosition="top" rowsPerPageTemplate="10,20,30,40,50"
+							rows="10" styleClass="table table-bordered"
+							emptyMessage="No existen registros" rowIndexVar="item"
+							style="margin-bottom:0">
+
+							<p:column headerText="Id" sortBy="#{lp.idAfpProduct}">
+								<h:outputText value="#{lp.idAfpProduct}" />
+							</p:column>
+
+							<p:column headerText="Producto"
+								sortBy="#{lp.product.nameProduct}">
+								<h:outputText value="#{lp.product.nameProduct}" />
+							</p:column>
+
+							<p:column headerText="Entidad bancaria"
+								sortBy="#{lp.product.institution.DInstitution}">
+								<h:outputText value="#{lp.product.institution.DInstitution}" />
+							</p:column>
+
+							<p:column headerText="Tipo de Fondo" sortBy="#{lp.typeAfp}">
+								<h:outputText value="#{lp.typeAfp}" />
+							</p:column>
+
+							<p:column headerText="Metodo de comisión"
+								sortBy="#{lp.methodcomition.nameMethodAFP}">
+								<h:outputText value="#{lp.methodcomition.nameMethodAFP}" />
+							</p:column>
+
+							<p:column headerText="Operación" exportable="false">
+
+								<h:commandLink value="Modificar"
+									action="#{afpProductController.ModifAfp(lp)}"
+									style="color:blue;" />
+							</p:column>
+
+							<p:column headerText="Operación" exportable="false">
+								<h:commandLink action="listAfpProduct" value="Eliminar"
+									actionListener="#{afpProductController.eraseAfp(lp)}"
+									style="color:red;">
+								</h:commandLink>
+							</p:column>
+
+						</p:dataTable>
+					</div>
+
+				</div>
+			</div>
+		</h:form>
+	</ui:define>
+
+	<ui:define name="footerCont">
+
+	</ui:define>
+</ui:composition>
+</html>

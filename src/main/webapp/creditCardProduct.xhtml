@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="submaster.xhtml">
+
+	<ui:define name="title">
+        .:Registro de tarjetas:.
+    </ui:define>
+
+	<ui:define name="titleCont">
+		<span>Tarjetas de Credito</span>
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form>
+			<h:outputLabel for="idCreditCardProduct" value="Id " styleClass="control-label" />
+
+			<p:inputText autocomplete="off" id="idCreditProduct"
+				styleClass="form-control"
+				value="#{creditCardController.creditcardproduct.idCreditCard}" required="true" />
+
+			<br />
+			<h:outputLabel for="cboProduct" value="Nombre producto" />
+			<p:selectOneMenu id="cboProduct"
+				value="#{creditCardController.creditcardproduct.product}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{creditCardController.listProduct}" var="m"
+					itemLabel="#{m.nameProduct}" itemValue="#{m}" />
+			</p:selectOneMenu>
+			<hr></hr>
+			<br />
+			
+			<br />
+			<h:outputLabel for="cboBranch" value="Marca de tarjeta" />
+			<p:selectOneMenu id="cboBranch"
+				value="#{creditCardController.creditcardproduct.branchcredit}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{creditCardController.listBranchCreditCard}" var="n"
+					itemLabel="#{n.nameBranchCredit}" itemValue="#{n}" />
+			</p:selectOneMenu>
+			<hr></hr>
+			<br />
+				
+			<h:outputLabel for="membershipCreditCard" value="Membresia"
+				styleClass="control-label" />
+
+			<p:inputText autocomplete="off" id="membershipCreditCard"
+				styleClass="form-control"
+				value="#{creditCardController.creditcardproduct.memebershipCreditCard}" maxlength="30"
+				required="true" />
+				
+			<h:outputLabel for="benefitCreditCard" value="Beneficio"
+				styleClass="control-label" />
+
+			<p:inputText autocomplete="off" id="benefitCreditCard"
+				styleClass="form-control"
+				value="#{creditCardController.creditcardproduct.benefitCreditCard}" maxlength="30"
+				required="true" />
+
+			<p:commandButton value="Grabar"
+				actionListener="#{creditCardController.insertCreditCardProduct()}"
+				styleClass="btn btn-primary " update="@form"
+				action="listCreditCardProduct?faces-redirect=true" />
+			<p:commandButton value="Cancelar"
+				action="listCreditCardProduct?faces-redirect=true" immediate="true"
+				styleClass="btn btn-default" ajax="false" />
+
+
+
+		</h:form>
+	</ui:define>
+
+	<ui:define name="footerCont">
+
+	</ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="master.xhtml">
+
+	<ui:define name="title">
+        .:Registro de Cliente:.
+    </ui:define>
+
+	<ui:define name="titleCont">
+		<span>Registrate</span>
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form>
+			<h:outputLabel for="idUserCenter" value="Id "
+				styleClass="control-label" />
+
+			<p:inputText autocomplete="off" id="idUserCenter"
+				styleClass="form-control"
+				value="#{userCenterController.userCenter.idUserCenter}"
+				required="true" />
+				
+			<h:outputLabel for="nameUserCenter"
+				value="Nombre" styleClass="control-label" />
+
+			<p:inputText autocomplete="off" id="nameUserCenter"
+				styleClass="form-control"
+				value="#{userCenterController.userCenter.nameUserCenter}"
+				maxlength="30" required="true" />
+
+
+			<h:outputLabel for="adressUserCenter" value="Contraseña "
+				styleClass="control-label" />
+
+			<p:inputText autocomplete="off" id="adressUserCenter"
+				styleClass="form-control"
+				value="#{userCenterController.userCenter.adressUserCenter}"
+				maxlength="30" required="true" />
+				
+			<h:outputLabel for="emailUserCenter" value="Email "
+				styleClass="control-label" />
+
+			<p:inputText autocomplete="off" id="emailUserCenter"
+				styleClass="form-control"
+				value="#{userCenterController.userCenter.emailUserCenter}"
+				maxlength="30" required="true" />
+				
+			<h:outputLabel for="dniUserCenter" value="DNI "
+				styleClass="control-label" />
+
+			<p:inputText autocomplete="off" id="dniUserCenter"
+				styleClass="form-control"
+				value="#{userCenterController.userCenter.dniUserCenter}"
+				maxlength="8" required="true" />
+				
+			<h:outputLabel for="espUserCenter" value="Especialidad"
+				styleClass="control-label" />
+				
+			<p:inputText autocomplete="off" id="espUserCenter"
+				styleClass="form-control"
+				value="#{userCenterController.userCenter.espUserCenter}"
+				maxlength="30" required="true" />
+			
+			<h:outputLabel for="salarioUserCenter" value="Salario"
+				styleClass="control-label" />
+				
+			<p:inputText autocomplete="off" id="salarioUserCenter"
+				styleClass="form-control"
+				value="#{userCenterController.userCenter.salarioUserCenter}"
+				maxlength="5" required="true" />
+
+	
+			<br />
+			<h:outputLabel for="cboRolUser" value="Rol Usuario" />
+			<p:selectOneMenu id="cboRolUser"
+				value="#{userCenterController.userCenter.rolUser}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{userCenterController.listaRolUser}" var="m"
+					itemLabel="#{m.nameRolUser}" itemValue="#{m}" />
+			</p:selectOneMenu>
+			<br /> 
+				
+				
+			<p:commandButton value="Registrarse"
+				actionListener="#{userCenterController.insert()}"
+				styleClass="btn btn-primary " update="@form"
+				action="listUser?faces-redirect=true" />
+			<p:commandButton value="Cancelar"
+				action="listUser?faces-redirect=true" immediate="true"
+				styleClass="btn btn-default" ajax="false" />
+
+
+
+		</h:form>
+	</ui:define>
+
+	<ui:define name="footerCont">
+
+	</ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<ui:composition template="master.xhtml">
+
+
+	<ui:define name="title">
+        .:Listado de Usuarios:.
+    </ui:define>
+
+	<ui:define name="titleCont">
+		<span>Lista de Usuarios </span>
+	</ui:define>
+
+	<ui:define name="content">
+
+		<h:form>
+
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="form-group table-responsive box-table-class">
+
+						<p:dataTable id="lstUser" var="v"
+							value="#{userCenterController.listaUser}" paginator="true"
+							paginatorPosition="top" rowsPerPageTemplate="10,20,30,40,50"
+							rows="10" styleClass="table table-bordered"
+							emptyMessage="No existen registros" rowIndexVar="item"
+							style="margin-bottom:0">
+
+							<p:column headerText="Id" sortBy="#{v.idUserCenter}">
+								<h:outputText value="#{v.idUserCenter}" />
+							</p:column>
+
+							<p:column headerText="Nombre" sortBy="#{v.nameUserCenter}">
+								<h:outputText value="#{v.nameUserCenter}" />
+							</p:column>
+							<p:column headerText="Contraseña" sortBy="#{v.adressUserCenter}">
+								<h:outputText value="#{v.adressUserCenter}" />
+							</p:column>
+							<p:column headerText="Email" sortBy="#{v.emailUserCenter}">
+								<h:outputText value="#{v.emailUserCenter}" />
+							</p:column>
+							<p:column headerText="DNI" sortBy="#{v.dniUserCenter}">
+								<h:outputText value="#{v.dniUserCenter}" />
+							</p:column>
+							<p:column headerText="Edad" sortBy="#{v.edadUserCenter}">
+								<h:outputText value="#{v.edadUserCenter}" />
+							</p:column>
+							<p:column headerText="Ciudad" sortBy="#{v.ciudadUserCenter}">
+								<h:outputText value="#{v.ciudadUserCenter}" />
+							</p:column>
+
+							<p:column headerText="Especialidad" sortBy="#{v.espUserCenter}">
+								<h:outputText value="#{v.espUserCenter}" />
+							</p:column>
+							<p:column headerText="Salario" sortBy="#{v.salarioUserCenter}">
+								<h:outputText value="#{v.salarioUserCenter}" />
+							</p:column>
+							<p:column headerText="Puntuacion" sortBy="#{v.ptsUserCenter}">
+								<h:outputText value="#{v.ptsUserCenter}" />
+							</p:column>
+
+
+							<p:column headerText="RolUser" sortBy="#{v.rolUser.nameRolUser}">
+								<h:outputText value="#{v.rolUser.nameRolUser}" />
+							</p:column>
+
+						</p:dataTable>
+					</div>
+
+				</div>
+			</div>
+		</h:form>
+	</ui:define>
+
+	<ui:define name="footerCont">
+
+	</ui:define>
+</ui:composition>
+</html>
