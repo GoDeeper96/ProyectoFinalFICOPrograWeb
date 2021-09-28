@@ -5,19 +5,22 @@
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
 	<persistence-unit name="Fico" transaction-type="JTA">
 		<jta-data-source>java:/PostgresDS1</jta-data-source>
-		<class>pe.com.fico.entities.AfpProduct</class>
 		<class>pe.com.fico.entities.BranchCreditCard</class>
 		<class>pe.com.fico.entities.CategoryProduct</class>
 		<class>pe.com.fico.entities.CreditCardProduct</class>
 		<class>pe.com.fico.entities.LoanProduct</class>
 		<class>pe.com.fico.entities.MethodComitionAFP</class>
-		<class>pe.com.fico.entities.RolUser</class>
 		<class>pe.com.fico.entities.SavingAccountProduct</class>
 		<class>pe.com.fico.entities.TypeLoan</class>
 		<class>pe.com.fico.entities.TypeSavingAccount</class>
-		<class>pe.com.fico.entities.UserCenter</class>
-		<class>pe.com.fico.entities.Product</class>
 		<class>pe.com.fico.entities.Institution</class>
+		<class>pe.com.fico.entities.Product</class>
+		<class>pe.com.fico.entities.AfpProduct</class>
+		<class>pe.com.fico.entities.Customer</class>
+		<class>pe.com.fico.entities.Adviser</class>
+		<class>pe.com.fico.entities.UserRol</class>
+		<class>pe.com.fico.entities.User</class>
+		<class>pe.com.fico.entities.Rol</class>
 		<properties>
 			<property
 				name="javax.persistence.schema-generation.database.action"
