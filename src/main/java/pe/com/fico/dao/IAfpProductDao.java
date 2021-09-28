@@ -13,4 +13,7 @@ public interface IAfpProductDao {
 	public void update(AfpProduct ap);
 
 	public List<AfpProduct> list();
+	
+	public List<AfpProduct> findByNameAfp(AfpProduct afp);
+	
 }

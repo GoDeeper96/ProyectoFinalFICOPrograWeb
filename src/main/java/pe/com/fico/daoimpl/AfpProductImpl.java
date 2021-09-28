@@ -60,5 +60,21 @@ public class AfpProductImpl implements IAfpProductDao {
 			System.out.println(e.getMessage());
 		}
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<AfpProduct> findByNameAfp(AfpProduct afp){
+		List<AfpProduct> lista=new ArrayList<AfpProduct>();
+		try {
+			Query q=em.createQuery("from AfpProduct m where m.typeAfp like ?1");
+			q.setParameter(1, "%"+afp.getTypeAfp()+"%");
+			lista=(List<AfpProduct>)q.getResultList();
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return lista;
+	}
+	
+	
+
 
 }

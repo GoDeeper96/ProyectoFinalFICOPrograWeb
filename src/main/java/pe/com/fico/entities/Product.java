@@ -1,7 +1,5 @@
 package pe.com.fico.entities;
 
-import java.util.Objects;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -101,7 +99,10 @@ public class Product {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(idProduct);
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + idProduct;
+		return result;
 	}
 
 	@Override
@@ -113,7 +114,9 @@ public class Product {
 		if (getClass() != obj.getClass())
 			return false;
 		Product other = (Product) obj;
-		return idProduct == other.idProduct;
+		if(idProduct!=other.idProduct)
+			return false;
+		return true;
 	}
 
 }

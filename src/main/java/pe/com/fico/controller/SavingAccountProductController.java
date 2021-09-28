@@ -80,7 +80,28 @@ public class SavingAccountProductController {
 	public void listaTypeSavingAccount() {
 		listTypeSaving=tsaService.list();
 	}
+	
+	public void eraseSaving(SavingAccountProduct sa) {
+		try {
+			saService.erase(sa.getIdSavingAccount());
+		}catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
 
+	public void updateSaving() {
+		try {
+			saService.update(this.savingaccount);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+
+	public String modifySaving(SavingAccountProduct ap) {
+		this.setSavingaccount(ap);
+		return "savingAccountMod.xhtml";
+
+	}
 	
 
 	//getters and setters

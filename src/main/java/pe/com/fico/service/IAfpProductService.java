@@ -13,4 +13,8 @@ public interface IAfpProductService {
 	public void update(AfpProduct p);
 
 	public List<AfpProduct> list();
+	
+	public List<AfpProduct> findByTypeAfp(AfpProduct afp);
+
+	
 }

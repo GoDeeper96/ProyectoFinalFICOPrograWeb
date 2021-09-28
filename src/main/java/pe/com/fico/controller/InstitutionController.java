@@ -1,10 +1,11 @@
 package pe.com.fico.controller;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -12,9 +13,10 @@ import pe.com.fico.entities.Institution;
 import pe.com.fico.service.IInstitutionService;
 
 @Named
-@RequestScoped
-public class InstitutionController {
+@SessionScoped
+public class InstitutionController implements Serializable {
 
+	private static final long serialVersionUID = 1L;
 	// CDI
 	@Inject
 	private IInstitutionService iService;

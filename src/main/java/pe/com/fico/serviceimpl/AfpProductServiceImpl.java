@@ -17,6 +17,7 @@ public class AfpProductServiceImpl implements IAfpProductService{
 	@Inject
 	private IAfpProductDao apDao;
 	
+
 	@Override
 	public void insert(AfpProduct p) {
 		// TODO Auto-generated method stub
@@ -36,5 +37,9 @@ public class AfpProductServiceImpl implements IAfpProductService{
 	public void update(AfpProduct ap) {
 		apDao.update(ap);
 	}
-
+	
+	public List<AfpProduct> findByTypeAfp(AfpProduct afp){
+		return apDao.findByNameAfp(afp);
+	}
+		
 }

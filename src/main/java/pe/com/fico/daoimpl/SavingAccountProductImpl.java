@@ -42,5 +42,25 @@ public class SavingAccountProductImpl implements ISavingAccountProductDao {
 		}
 		return lista;
 	}
+	
+	@Transactional
+	public void erase(int idSaving) {
+		SavingAccountProduct sap=new SavingAccountProduct();
+		try {
+			sap=em.getReference(SavingAccountProduct.class, idSaving);
+			em.remove(sap);
+		} catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+	
+	@Transactional
+	public void update(SavingAccountProduct sap) {
+		try {
+			em.merge(sap);
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
 
 }

@@ -28,5 +28,13 @@ public class SavingAccountProductServiceImpl implements ISavingAccountProductSer
 		// TODO Auto-generated method stub
 		return saDao.list();
 	}
+	
+	public void erase(int idSaving) {
+		saDao.erase(idSaving);
+	}
+	
+	public void update(SavingAccountProduct sa) {
+		saDao.update(sa);
+	}
 
 }

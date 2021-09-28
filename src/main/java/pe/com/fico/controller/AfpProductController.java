@@ -101,7 +101,23 @@ public class AfpProductController {
 		return "afpMod.xhtml";
 
 	}
+	
+	public void clean() {
+		this.init();
+	}
 
+	public void findByName() {
+		try {
+			if(afpproduct.getTypeAfp().isEmpty()) {
+				this.listaLoanProduct();
+			}else {
+				listAfpProduct=this.apService.findByTypeAfp(this.getAfpproduct());
+			}
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+	
 	// getters and setters
 
 	public AfpProduct getAfpproduct() {
