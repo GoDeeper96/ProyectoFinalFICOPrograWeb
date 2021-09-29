@@ -1,17 +1,16 @@
-package pe.com.fico.dao;
+package pe.edu.upc.dao;
 
 import java.util.List;
 import java.util.Optional;
 
-import pe.com.fico.entities.User;
+import pe.edu.upc.entity.User;
 
 public interface IUserDao {
-
 	Integer insert(User user) throws Exception;
 
 	Integer update(User user) throws Exception;
 
-	Integer delete(User user) throws Exception;
+	Integer delete(int user) throws Exception;
 
 	List<User> findAll() throws Exception;
 
@@ -20,4 +19,5 @@ public interface IUserDao {
 	String getPassworHashedByUserName(String username) throws Exception;
 
 	Optional<User> findUserByUsername(User user) throws Exception;
+	
 }

@@ -1,22 +1,20 @@
-package pe.com.fico.serviceimpl;
+package pe.edu.upc.serviceimpl;
 
 import java.io.Serializable;
 import java.util.List;
 import java.util.Optional;
 
-import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.transaction.Transactional;
 
 import org.mindrot.jbcrypt.BCrypt;
 
-import pe.com.fico.dao.IUserDao;
-import pe.com.fico.entities.User;
-import pe.com.fico.service.IUserService;
+import pe.edu.upc.dao.IUserDao;
+import pe.edu.upc.entity.User;
+import pe.edu.upc.service.IUserService;
 
 @Named
-@RequestScoped
 public class UserServiceImpl implements IUserService, Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -38,7 +36,7 @@ public class UserServiceImpl implements IUserService, Serializable {
 
 	@Transactional
 	@Override
-	public Integer delete(User t) throws Exception {
+	public Integer delete(int t) throws Exception {
 		return uD.delete(t);
 	}
 
@@ -54,12 +52,12 @@ public class UserServiceImpl implements IUserService, Serializable {
 
 	@Override
 	public Optional<User> authentication(User user) throws Exception {
-		String password = user.getPaswordUser();
+		String password = user.getPassword();
 
-		String passwordHash = uD.getPassworHashedByUserName(user.getNameUser());
+		String passwordHash = uD.getPassworHashedByUserName(user.getUsername());
 
 		if (BCrypt.checkpw(password, passwordHash)) {
-			user.setPaswordUser(passwordHash);
+			user.setPassword(passwordHash);
 			return uD.findUserByUsername(user);
 		}
 

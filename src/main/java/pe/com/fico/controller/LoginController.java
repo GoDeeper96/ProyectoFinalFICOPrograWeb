@@ -1,4 +1,4 @@
-package pe.com.fico.controller;
+package pe.edu.upc.controller;
 
 import java.io.Serializable;
 import java.util.Optional;
@@ -10,8 +10,8 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import pe.com.fico.entities.User;
-import pe.com.fico.serviceimpl.UserServiceImpl;
+import pe.edu.upc.entity.User;
+import pe.edu.upc.serviceimpl.UserServiceImpl;
 
 @Named
 @ViewScoped
@@ -57,4 +57,5 @@ public class LoginController implements Serializable {
 	public void setUser(User user) {
 		this.user = user;
 	}
+
 }

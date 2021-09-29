@@ -1,4 +1,5 @@
-package pe.com.fico.controller;
+package pe.edu.upc.controller;
+
 
 import java.io.Serializable;
 import java.util.List;
@@ -8,11 +9,9 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import pe.com.fico.entities.User;
-import pe.com.fico.entities.UserRol;
-import pe.com.fico.service.IRolService;
-
-
+import pe.edu.upc.entity.User;
+import pe.edu.upc.entity.UserRol;
+import pe.edu.upc.service.IRolService;
 
 @Named
 @ViewScoped
@@ -54,14 +53,11 @@ public class MasterController implements Serializable {
 
 		String rol = "";
 		switch (viewId) {
-		case "/listInstitution.xhtml":
-			rol = "ADMIN, CLIENT";
-			break;
-		case "/listProduct.xhtml":
-			rol = "ADMIN";
+		case "/listRegister.xhtml":
+			rol = "USER";
 			break;
 		case "/panel.xhtml":
-			rol = "ADMIN";
+			rol = "ADMIN,USER";
 			break;
 		
 		default:

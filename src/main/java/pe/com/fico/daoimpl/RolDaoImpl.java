@@ -1,4 +1,4 @@
-package pe.com.fico.daoimpl;
+package pe.edu.upc.daoimpl;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -10,27 +10,27 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import pe.com.fico.dao.IRolDao;
-import pe.com.fico.entities.Rol;
-import pe.com.fico.entities.User;
-import pe.com.fico.entities.UserRol;
+import pe.edu.upc.dao.IRolDao;
+import pe.edu.upc.entity.Rol;
+import pe.edu.upc.entity.User;
+import pe.edu.upc.entity.UserRol;
 
 @Named
 public class RolDaoImpl implements IRolDao, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@PersistenceContext(unitName = "Fico")
+	@PersistenceContext(unitName = "seguridadFico")
 	private EntityManager em;
 
 	public Integer insert(Rol t) throws Exception {
 		em.persist(t);
-		return t.getIdRol();
+		return t.getId();
 	}
 
 	public Integer update(Rol t) throws Exception {
 		em.merge(t);
-		return t.getIdRol();
+		return t.getId();
 	}
 
 	public Integer delete(Rol t) throws Exception {
@@ -53,7 +53,7 @@ public class RolDaoImpl implements IRolDao, Serializable {
 		Rol rol = new Rol();
 		List<Rol> roles = new ArrayList<Rol>();
 		Query query = em.createQuery("FROM Rol r where r.id = ?1");
-		query.setParameter(1, t.getIdRol());
+		query.setParameter(1, t.getId());
 
 		roles = (List<Rol>) query.getResultList();
 
@@ -64,26 +64,7 @@ public class RolDaoImpl implements IRolDao, Serializable {
 		return Optional.of(rol);
 	}
 
-	@SuppressWarnings("unchecked")
-	public List<UserRol> findUserRolesByUser(User user) throws Exception {
-		List<UserRol> userRoles = new ArrayList<UserRol>();
-
-		try {
-			Query query = em.createQuery("FROM UserRol ur where ur.user.customer.id =?1");
-			query.setParameter(1, user.getCustomer().getIdClient());
-
-			userRoles = (List<UserRol>) query.getResultList();
-
-		} catch (Exception e) {
-			throw e;
-		}
-
-		return userRoles;
-	}
-
-	@Override
 	public Integer insertUserRole(List<UserRol> userRoles) throws Exception {
-		// TODO Auto-generated method stub
 		try {
 
 			final int[] iarr = { 0 };
@@ -99,6 +80,23 @@ public class RolDaoImpl implements IRolDao, Serializable {
 			return 0;
 		}
 		return 1;
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<UserRol> findUserRolesByUser(User user) throws Exception {
+		List<UserRol> userRoles = new ArrayList<UserRol>();
+
+		try {
+			Query query = em.createQuery("FROM UserRol ur where ur.user.customer.id =?1");
+			query.setParameter(1, user.getCustomer().getId());
+
+			userRoles = (List<UserRol>) query.getResultList();
+
+		} catch (Exception e) {
+			throw e;
+		}
+
+		return userRoles;
 	}
 
 }

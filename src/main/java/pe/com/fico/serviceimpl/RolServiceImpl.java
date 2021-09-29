@@ -1,5 +1,4 @@
-package pe.com.fico.serviceimpl;
-
+package pe.edu.upc.serviceimpl;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -10,11 +9,11 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.transaction.Transactional;
 
-import pe.com.fico.dao.IRolDao;
-import pe.com.fico.entities.Rol;
-import pe.com.fico.service.IRolService;
-import pe.com.fico.entities.User;
-import pe.com.fico.entities.UserRol;
+import pe.edu.upc.dao.IRolDao;
+import pe.edu.upc.entity.Rol;
+import pe.edu.upc.entity.User;
+import pe.edu.upc.entity.UserRol;
+import pe.edu.upc.service.IRolService;
 
 @Named
 public class RolServiceImpl implements IRolService, Serializable {
@@ -73,6 +72,5 @@ public class RolServiceImpl implements IRolService, Serializable {
 	public List<UserRol> findUserRolesByUser(User user) throws Exception {
 		return rD.findUserRolesByUser(user);
 	}
-
-
+	
 }

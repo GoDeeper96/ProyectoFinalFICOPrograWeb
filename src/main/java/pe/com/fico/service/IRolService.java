@@ -1,14 +1,13 @@
-package pe.com.fico.service;
+package pe.edu.upc.service;
 
 import java.util.List;
 import java.util.Optional;
 
-import pe.com.fico.entities.Rol;
-import pe.com.fico.entities.User;
-import pe.com.fico.entities.UserRol;
+import pe.edu.upc.entity.Rol;
+import pe.edu.upc.entity.User;
+import pe.edu.upc.entity.UserRol;
 
 public interface IRolService {
-
 	Integer insert(Rol rol) throws Exception;
 
 	Integer update(Rol rol) throws Exception;
@@ -22,4 +21,5 @@ public interface IRolService {
 	Integer assignRolesToUser(User user, List<Rol> roles) throws Exception;
 
 	List<UserRol> findUserRolesByUser(User user) throws Exception;
+
 }
