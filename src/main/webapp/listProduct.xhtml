@@ -21,8 +21,48 @@
 
 		<h:form>
 			<div class="row">
+				<div class="col-sm-4">
+					<div class="form-group">
+						<h:outputLabel for="nombres" value="Búsqueda"
+							styleClass="control-label" />
+						<p:inputText autocomplete="off" id="nombres"
+							styleClass="form-control"
+							value="#{productController.product.nameProduct}" maxlength="120" />
+						<br />
+						<h:outputLabel for="cboTipoInstitucion"
+							value="Tipo de Institucion" />
+						<p:selectOneMenu id="cboTipoInstitucion"
+							value="#{productController.product.institution}"
+							converter="omnifaces.SelectItemsConverter">
+							<f:selectItems value="#{productController.listInstitution}"
+								var="c" itemLabel="#{c.DTypeInstitution}" itemValue="#{c}" />
+						</p:selectOneMenu>
+						<br />
+						<h:outputLabel for="cboCategory" value="Tipo de Producto" />
+						<p:selectOneMenu id="cboCategory"
+							value="#{productController.product.category}"
+							converter="omnifaces.SelectItemsConverter">
+							<f:selectItems value="#{productController.listCategory}" var="c"
+								itemLabel="#{c.nameCategoryProduct}" itemValue="#{c}" />
+						</p:selectOneMenu>
+						<br />
+						<h:outputLabel for="cboInstitution" value="Institucion" />
+						<p:selectOneMenu id="cboInstitution"
+							value="#{productController.product.institution}"
+							converter="omnifaces.SelectItemsConverter">
+							<f:selectItems value="#{productController.listInstitution}"
+								var="m" itemLabel="#{m.DInstitution}" itemValue="#{m}" />
+						</p:selectOneMenu>
+						<br />
+					</div>
+				</div>
+			</div>
+			<div class="row">
 				<p:commandButton value="Nuevo"
 					action="#{productController.newProduct()}"
+					styleClass="btn btn-primary" ajax="false" />
+				<p:commandButton value="Iniciar Busqueda"
+					action="#{productController.findByName()}"
 					styleClass="btn btn-primary" ajax="false" />
 			</div>
 
