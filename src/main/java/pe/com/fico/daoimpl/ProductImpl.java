@@ -40,4 +40,21 @@ public class ProductImpl implements IProductDao {
 		}
 		return lista;
 	}
+	@SuppressWarnings("unchecked")
+	public List<Product> findByName(Product pr){
+
+	    List<Product> lista=new ArrayList<Product>();
+	    try {
+	        Query q=em.createQuery("select pr from Product pr, Institution ins, CategoryProduct cp \r\n"
+	        		+ "where pr.nameProduct like ?1 AND cp.nameCategoryProduct = ?2 AND ins.nameInstitution = ?3 AND ins.typeInstitution = ?4");
+	        q.setParameter(1,"%" + pr.getNameProduct() + "%");
+	        q.setParameter(2, pr.getCategory().getNameCategoryProduct());
+	        q.setParameter(3, pr.getInstitution().getDInstitution()); 
+	        q.setParameter(4, pr.getInstitution().getDTypeInstitution());
+	        lista=(List<Product>)q.getResultList();
+	    }catch(Exception e) {
+	        System.out.println(e.getMessage());
+	    }
+	    return lista;
+	}
 }
