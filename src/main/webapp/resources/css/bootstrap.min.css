@@ -2131,15 +2131,16 @@ textarea.input-lg, select[multiple].input-lg {
 }
 
 .btn-primary {
-	color: #fff;
-	background-color: #428bca;
-	border-color: #357ebd
+	color: white;
+	background-color: #1F4868;
+	border: none;
+	padding: 10px;
 }
 
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active,
 	.btn-primary.active, .open .dropdown-toggle.btn-primary {
-	color: #fff;
-	background-color: #3276b1;
+	color: black;
+	background-color: #1F4868;
 	border-color: #285e8e
 }
 
@@ -2154,7 +2155,7 @@ textarea.input-lg, select[multiple].input-lg {
 	.btn-primary.disabled:active, .btn-primary[disabled]:active, fieldset[disabled] .btn-primary:active,
 	.btn-primary.disabled.active, .btn-primary[disabled].active, fieldset[disabled] .btn-primary.active
 	{
-	background-color: #428bca;
+	background-color: #1F4868;
 	border-color: #357ebd
 }
 
@@ -3731,7 +3732,7 @@ textarea.input-group-sm>.form-control, textarea.input-group-sm>.input-group-addo
 
 .nav>li>a:hover, .nav>li>a:focus {
 	text-decoration: none;
-	background-color: #eee
+	background-color: #206A5D
 }
 
 .nav>li.disabled>a {
@@ -6231,7 +6232,7 @@ button.close {
 	position: fixed
 }
 
-@
+
 -ms-viewport {
 	width: device-width
 }

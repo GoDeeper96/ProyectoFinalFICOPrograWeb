@@ -6,11 +6,11 @@
 	xmlns:p="http://primefaces.org/ui">
 
 
-<ui:composition template="master.xhtml">
+<ui:composition template="masterAdmin.xhtml">
 
 
 	<ui:define name="title">
-        .:Listado de Usuarios:.
+        Listado de Usuarios
     </ui:define>
 
 	<ui:define name="titleCont">
@@ -20,54 +20,62 @@
 	<ui:define name="content">
 
 		<h:form>
+			<div class="row">
+				<div class="col-sm-4">
+					<div class="form-group">
+						<h:outputLabel for="name" value="Búsqueda"
+							styleClass="control-label" />
+						<p:inputText autocomplete="off" id="name"
+							styleClass="form-control" value="#{userController.client.name}"
+							maxlength="120" />
+					</div>
+				</div>
+				<div class="col-sm-8 text-right">
+					<div class="form-group box-main-btn">
+						<span style="display: block; height: 30px;"></span>
+						<p:commandButton value="Limpiar" update="lstInfectious"
+							actionListener="#{userController.clean()}"
+							styleClass="btn btn-default" ajax="false" />
+						<p:commandButton value="Buscar" update="lstUser"
+							actionListener="#{userController.findByName()}"
+							styleClass="btn btn-default btn-border" ajax="true" />
+					</div>
+				</div>
 
+			</div>
 			<div class="row">
 				<div class="col-sm-12">
 					<div class="form-group table-responsive box-table-class">
 
 						<p:dataTable id="lstUser" var="v"
-							value="#{userCenterController.listaUser}" paginator="true"
+							value="#{userController.listUser}" paginator="true"
 							paginatorPosition="top" rowsPerPageTemplate="10,20,30,40,50"
 							rows="10" styleClass="table table-bordered"
 							emptyMessage="No existen registros" rowIndexVar="item"
 							style="margin-bottom:0">
 
-							<p:column headerText="Id" sortBy="#{v.idUserCenter}">
-								<h:outputText value="#{v.idUserCenter}" />
+							<p:column headerText="Id" sortBy="#{v.idClient}">
+								<h:outputText value="#{v.idClient}" />
 							</p:column>
 
-							<p:column headerText="Nombre" sortBy="#{v.nameUserCenter}">
-								<h:outputText value="#{v.nameUserCenter}" />
+							<p:column headerText="Nombre" sortBy="#{v.name}">
+								<h:outputText value="#{v.name}" />
 							</p:column>
-							<p:column headerText="Contraseña" sortBy="#{v.adressUserCenter}">
-								<h:outputText value="#{v.adressUserCenter}" />
+							<p:column headerText="Edad" sortBy="#{v.ageClient}">
+								<h:outputText value="#{v.ageClient}" />
 							</p:column>
-							<p:column headerText="Email" sortBy="#{v.emailUserCenter}">
-								<h:outputText value="#{v.emailUserCenter}" />
+							<p:column headerText="Ciudad" sortBy="#{v.cityClient}">
+								<h:outputText value="#{v.cityClient}" />
 							</p:column>
-							<p:column headerText="DNI" sortBy="#{v.dniUserCenter}">
-								<h:outputText value="#{v.dniUserCenter}" />
-							</p:column>
-							<p:column headerText="Edad" sortBy="#{v.edadUserCenter}">
-								<h:outputText value="#{v.edadUserCenter}" />
-							</p:column>
-							<p:column headerText="Ciudad" sortBy="#{v.ciudadUserCenter}">
-								<h:outputText value="#{v.ciudadUserCenter}" />
+							<p:column headerText="DNI" sortBy="#{v.dni}">
+								<h:outputText value="#{v.dni}" />
 							</p:column>
 
-							<p:column headerText="Especialidad" sortBy="#{v.espUserCenter}">
-								<h:outputText value="#{v.espUserCenter}" />
-							</p:column>
-							<p:column headerText="Salario" sortBy="#{v.salarioUserCenter}">
-								<h:outputText value="#{v.salarioUserCenter}" />
-							</p:column>
-							<p:column headerText="Puntuacion" sortBy="#{v.ptsUserCenter}">
-								<h:outputText value="#{v.ptsUserCenter}" />
-							</p:column>
+							<p:column headerText="Operación" exportable="false">
 
-
-							<p:column headerText="RolUser" sortBy="#{v.rolUser.nameRolUser}">
-								<h:outputText value="#{v.rolUser.nameRolUser}" />
+								<h:commandLink value="Modificar"
+									action="#{userController.ModifAfp(v)}"
+									style="color:blue;" />
 							</p:column>
 
 						</p:dataTable>

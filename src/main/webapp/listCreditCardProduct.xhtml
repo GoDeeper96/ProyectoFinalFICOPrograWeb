@@ -6,11 +6,11 @@
 	xmlns:p="http://primefaces.org/ui">
 
 
-<ui:composition template="submaster.xhtml">
+<ui:composition template="masterAdmin.xhtml">
 
 
 	<ui:define name="title">
-        .:Listado de Tarjetas:.
+        Listado de Tarjetas
     </ui:define>
 
 	<ui:define name="titleCont">
@@ -21,9 +21,31 @@
 
 		<h:form>
 			<div class="row">
-				<p:commandButton value="Nuevo"
-					action="#{creditCardController.newLoanProduct()}"
-					styleClass="btn btn-primary" ajax="false" />
+				<div class="col-sm-4">
+					<div class="form-group">
+						<h:outputLabel for="name" value="Búsqueda"
+							styleClass="control-label" />
+						<p:inputText autocomplete="off" id="name"
+							styleClass="form-control"
+							value="#{creditCardController.creditcardproduct.benefitCreditCard}"
+							maxlength="120" />
+					</div>
+				</div>
+				<div class="col-sm-8 text-right">
+					<div class="form-group box-main-btn">
+						<span style="display: block; height: 30px;"></span>
+						<p:commandButton value="Limpiar" update="lstInfectious"
+							actionListener="#{creditCardController.clean()}"
+							styleClass="btn btn-default" ajax="false" />
+						<p:commandButton value="Buscar" update="lstLoanProduct"
+							actionListener="#{creditCardController.findByName()}"
+							styleClass="btn btn-default btn-border" ajax="true" />
+						<p:commandButton value="Nuevo"
+							action="#{creditCardController.newLoanProduct()}"
+							styleClass="btn btn-danger" ajax="false" />
+					</div>
+				</div>
+
 			</div>
 
 			<div class="row">
@@ -46,27 +68,26 @@
 								sortBy="#{lp.product.nameProduct}">
 								<h:outputText value="#{lp.product.nameProduct}" />
 							</p:column>
-							
+
 							<p:column headerText="Entidad bancaria"
 								sortBy="#{lp.product.institution.DInstitution}">
 								<h:outputText value="#{lp.product.institution.DInstitution}" />
 							</p:column>
-							
+
 							<p:column headerText="Marca"
 								sortBy="#{lp.branchcredit.nameBranchCredit}">
 								<h:outputText value="#{lp.branchcredit.nameBranchCredit}" />
 							</p:column>
-										
-							<p:column headerText="Beneficio"
-								sortBy="#{lp.benefitCreditCard}">
+
+							<p:column headerText="Beneficio" sortBy="#{lp.benefitCreditCard}">
 								<h:outputText value="#{lp.benefitCreditCard}" />
 							</p:column>
-							
+
 							<p:column headerText="Membresia"
 								sortBy="#{lp.memebershipCreditCard}">
 								<h:outputText value="#{lp.memebershipCreditCard}" />
-							</p:column>		
-							
+							</p:column>
+
 							<p:column headerText="Operación" exportable="false">
 
 								<h:commandLink value="Modificar"
@@ -79,7 +100,7 @@
 									actionListener="#{creditCardController.eraseCreditCard(lp)}"
 									style="color:red;">
 								</h:commandLink>
-							</p:column>				
+							</p:column>
 
 						</p:dataTable>
 					</div>

@@ -6,7 +6,7 @@
 	xmlns:p="http://primefaces.org/ui">
 
 
-<ui:composition template="submaster.xhtml">
+<ui:composition template="masterAdmin.xhtml">
 
 
 	<ui:define name="title">
@@ -21,9 +21,30 @@
 
 		<h:form>
 			<div class="row">
-				<p:commandButton value="Nuevo"
-					action="#{loanProductController.newLoanProduct()}"
-					styleClass="btn btn-primary" ajax="false" />
+				<div class="col-sm-4">
+					<div class="form-group">
+						<h:outputLabel for="name" value="Búsqueda"
+							styleClass="control-label" />
+						<p:inputText autocomplete="off" id="name"
+							styleClass="form-control"
+							value="#{loanProductController.loanproduct.currencyLoan}"
+							maxlength="120" />
+					</div>
+				</div>
+				<div class="col-sm-8 text-right">
+					<div class="form-group box-main-btn">
+						<span style="display: block; height: 30px;"></span>
+						<p:commandButton value="Limpiar" update="lstInfectious"
+							actionListener="#{loanProductController.clean()}"
+							styleClass="btn btn-default" ajax="false" />
+						<p:commandButton value="Buscar" update="lstLoanProduct"
+							actionListener="#{loanProductController.findByName()}"
+							styleClass="btn btn-default btn-border" ajax="true" />
+						<p:commandButton value="Nuevo"
+							action="#{loanProductController.newLoanProduct()}"
+							styleClass="btn btn-danger" ajax="false" />
+					</div>
+				</div>
 			</div>
 
 			<div class="row">

@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"></link>
+	<link rel="shortcut icon" type="image/x-icon"
+		href="resources/img/logoo.png" />
+
+</h:head>
+
+<body>
+
+	<div align="center" class="container base_fondo_fff"
+		style="min-height: 600px; border-radius: 10px; background: #EBECF1">
+		<h:form id="frm">
+			<p:growl id="men" />
+			<center style="margin-top: 70px">
+				<h:graphicImage value="/resources/img/logoo.png" height="25%"
+					width="25%"></h:graphicImage>
+				<br />
+			</center>
+			
+			<h:panelGrid columns="2">
+
+				<p:outputLabel for="txtUsername" value="Usuario: "
+					style="padding:10px;" />
+				<h:inputText id="txtUsername"
+					value='#{loginController.user.nameUser}' styleClass="form-control" />
+
+
+				<p:outputLabel for="txtPassword" value="Contraseña: "
+					style="padding:10px;" />
+				<h:inputSecret id="txtPassword"
+					value="#{loginController.user.paswordUser}"
+					styleClass="form-control" />
+
+			</h:panelGrid>
+			<div style="padding: 5px;">
+				<p:commandButton value="Iniciar Sesión"
+					action="#{loginController.authentication()}" update=":frm"
+					styleClass="btn btn-primary" style="background: #206A5D; border:none"/>
+			</div>
+			<div style="padding: 5px;">
+				<p:commandButton value="Crear Usuario"
+					action="register?faces-redirect=true" immediate="true"
+					styleClass="btn btn-primary" style="background: #206A5D; border:none" />
+			</div>
+		</h:form>
+	</div>
+
+
+
+</body>
+</html>
