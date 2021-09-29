@@ -40,17 +40,4 @@ public class ProductImpl implements IProductDao {
 		}
 		return lista;
 	}
-	
-	@SuppressWarnings("unchecked")
-	public List<Product> findByName(Product afp){
-		List<Product> lista=new ArrayList<Product>();
-		try {
-			Query q=em.createQuery("from Product m where m.nameProduct like ?1");
-			q.setParameter(1, "%"+afp.getNameProduct()+"%");
-			lista=(List<Product>)q.getResultList();
-		}catch(Exception e) {
-			System.out.println(e.getMessage());
-		}
-		return lista;
-	}
 }

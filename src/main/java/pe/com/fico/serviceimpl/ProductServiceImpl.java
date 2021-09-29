@@ -29,9 +29,5 @@ public class ProductServiceImpl implements IProductService {
 		// TODO Auto-generated method stub
 		return pDao.list();
 	}
-	
-	public List<Product> findByProduct(Product afp){
-		return pDao.findByName(afp);
-	}
 
 }

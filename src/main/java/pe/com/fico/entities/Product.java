@@ -1,5 +1,7 @@
 package pe.com.fico.entities;
 
+import java.util.Objects;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,43 +12,39 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Product")
-
+@Table(name="Product")
 public class Product {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idProduct;
-
-	@Column(name = "nameProduct", length = 45, nullable = false)
+	
+	@Column(name="nameProduct",length=45,nullable=false)
 	private String nameProduct;
-
-	@Column(name = "ratingProduct", nullable = false)
+	
+	@Column(name="ratingProduct", nullable=false)
 	private float ratingProduct;
-
-	@Column(name = "rateproduct", nullable = true)
+	
+	@Column(name="rateproduct",nullable=true)
 	private float rateProduct;
-
+	
+	@Column (name="typeProduct", nullable= false)
+	private String typeProduct;
+	
 	@ManyToOne
-	@JoinColumn(name = "idCategoryproduct", nullable = false)
-	private CategoryProduct category;
-
-	@ManyToOne
-	@JoinColumn(name = "idInstitution", nullable = false)
+	@JoinColumn(name="idInstitution",nullable=false)
 	private Institution institution;
-
+	
 	public Product() {
 		super();
 	}
-
-	public Product(int idProduct, String nameProduct, float ratingProduct, float rateProduct, CategoryProduct category,
-			Institution institution) {
-		super();
-		this.idProduct = idProduct;
-		this.nameProduct = nameProduct;
-		this.ratingProduct = ratingProduct;
-		this.rateProduct = rateProduct;
-		this.category = category;
-		this.institution = institution;
+	
+	public Product(int idProduct, String nameProduct, float ratingProduct,float rateProduct, Institution institution, String typeProduct) {
+		this.idProduct=idProduct;
+		this.nameProduct=nameProduct;
+		this.rateProduct=rateProduct;
+		this.ratingProduct=ratingProduct;
+		this.institution=institution;	
+		this.typeProduct=typeProduct;
 	}
 
 	public int getIdProduct() {
@@ -81,14 +79,6 @@ public class Product {
 		this.rateProduct = rateProduct;
 	}
 
-	public CategoryProduct getCategory() {
-		return category;
-	}
-
-	public void setCategory(CategoryProduct category) {
-		this.category = category;
-	}
-
 	public Institution getInstitution() {
 		return institution;
 	}
@@ -97,12 +87,17 @@ public class Product {
 		this.institution = institution;
 	}
 
+	public String getTypeProduct() {
+		return typeProduct;
+	}
+
+	public void setTypeProduct(String typeProduct) {
+		this.typeProduct = typeProduct;
+	}
+
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + idProduct;
-		return result;
+		return Objects.hash(idProduct);
 	}
 
 	@Override
@@ -114,9 +109,8 @@ public class Product {
 		if (getClass() != obj.getClass())
 			return false;
 		Product other = (Product) obj;
-		if(idProduct!=other.idProduct)
-			return false;
-		return true;
+		return idProduct == other.idProduct;
 	}
 
+	
 }
