@@ -9,5 +9,5 @@ public interface IProductService {
 	public void insert(Product p);
 
 	public List<Product> list();
-
+	public List<Product> findByName(Product pr);
 }
