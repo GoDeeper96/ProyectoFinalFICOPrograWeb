@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<ui:composition template="master.xhtml">
+
+
+	<ui:define name="title">
+        .:Lista Usuarios:.
+    </ui:define>
+
+	<ui:define name="titleCont">
+		<span>Usuarios </span>
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form>
+
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="form-group table-responsive box-table-class">
+
+						<p:dataTable id="lstUser" var="c"
+							value="#{registerController.listUser}" paginator="true"
+							paginatorPosition="top" rowsPerPageTemplate="10,20,30,40,50"
+							rows="10" styleClass="table table-bordered"
+							emptyMessage="No existen registros" rowIndexVar="item"
+							style="margin-bottom:0">
+
+							<p:column headerText="Nombre" sortBy="#{c.customer.name}">
+								<h:outputText value="#{c.customer.name}" />
+							</p:column>
+							<p:column headerText="Edad" sortBy="#{c.customer.edad}">
+								<h:outputText value="#{c.customer.edad}" />
+							</p:column>
+							<p:column headerText="Dni" sortBy="#{c.customer.dni}">
+								<h:outputText value="#{c.customer.dni}" />
+							</p:column>
+							<p:column headerText="Correo" sortBy="#{c.customer.email}">
+								<h:outputText value="#{c.customer.email}" />
+							</p:column>
+							<p:column headerText="Direccion" sortBy="#{c.customer.address}">
+								<h:outputText value="#{c.customer.address}" />
+							</p:column>
+							<p:column headerText="Pais" sortBy="#{c.customer.country}">
+								<h:outputText value="#{c.customer.country}" />
+							</p:column>
+
+							<p:column headerText="Usuario" sortBy="#{c.username}">
+								<h:outputText value="#{c.username}" />
+							</p:column>
+
+							<p:column headerText="Contraseña" sortBy="#{c.password}">
+								<h:outputText value="#{c.password}" />
+							</p:column>
+
+						</p:dataTable>
+					</div>
+
+				</div>
+			</div>
+		</h:form>
+	</ui:define>
+
+	<ui:define name="footerCont">
+
+	</ui:define>
+</ui:composition>
+</html>

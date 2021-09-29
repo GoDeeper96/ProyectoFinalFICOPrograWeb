@@ -16,11 +16,12 @@
 
 	<h:form id="frm">
 		<div class="form-group box-main-btn" align="center">
-			<h:graphicImage value="/resources/img/acceso.jpg" height="30%"
+			<h:graphicImage value="/resources/img/accesoD.jpg" height="30%"
 				width="30%"></h:graphicImage>
 			<br />
-			<p:commandButton value="No tiene acceso" action="panelGeneral"
-				styleClass="btn btn-primary"/>
+			<p:commandButton value="Acceso Denegado"
+				action="index?faces-redirect=true" immediate="true"
+				styleClass="btn btn-outline-success btn-sm" />
 		</div>
 	</h:form>
 
