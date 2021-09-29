@@ -1,10 +1,11 @@
 package pe.com.fico.controller;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -16,9 +17,10 @@ import pe.com.fico.service.IInstitutionService;
 import pe.com.fico.service.IProductService;
 
 @Named
-@RequestScoped
-public class ProductController {
+@SessionScoped
+public class ProductController implements Serializable {
 
+	private static final long serialVersionUID = 1L;
 	@Inject
 	private IProductService pService;
 
@@ -33,6 +35,7 @@ public class ProductController {
 	private CategoryProduct category;
 
 	List<Product> listProduct;
+	List<Product> listPopular;
 	List<Institution> listInstitution;
 	List<CategoryProduct> listCategory;
 
@@ -44,9 +47,11 @@ public class ProductController {
 		this.product = new Product();
 		this.category = new CategoryProduct();
 		this.institution = new Institution();
+		this.listPopular=new ArrayList<Product>();
 		this.listaProduct();
 		this.listaInstitution();
 		this.listaCategories();
+		this.listaPopularProduct();
 	}
 
 	public String newProduct() {
@@ -75,6 +80,28 @@ public class ProductController {
 		listProduct = pService.list();
 	}
 
+	public void findByName() {
+		try {
+			if(product.getNameProduct().isEmpty()) {
+				this.listaProduct();
+			}else {
+				listProduct=this.pService.findByProduct(product);
+			}
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+	
+	public void listaPopularProduct() {
+		for(int i=0;i<listProduct.size();i++) {
+			if(listProduct.get(i).getRatingProduct()>4) {
+				listPopular.add(listProduct.get(i));
+			}
+		}
+	}
+	public void clean() {
+		this.init();
+	}
 	// Getters and Setter
 	public Product getProduct() {
 		return product;
@@ -123,6 +150,15 @@ public class ProductController {
 	public void setCategory(CategoryProduct category) {
 		this.category = category;
 	}
+
+	public List<Product> getListPopular() {
+		return listPopular;
+	}
+
+	public void setListPopular(List<Product> listPopular) {
+		this.listPopular = listPopular;
+	}
+	
 	
 
 }
